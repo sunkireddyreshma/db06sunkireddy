@@ -1,7 +1,7 @@
-# fwb06sunkireddy
+# db06sunkireddy
 Dragonflies have six legs but they cannot walk.
 
-Heroku server:https://fwb06sunkireddy.herokuapp.com/
+Heroku server:https://db06sunkireddy.herokuapp.com/
 
 Class : Horse
 
