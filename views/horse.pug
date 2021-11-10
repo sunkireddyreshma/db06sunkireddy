@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-    - let horses  =[{Name:"Chutki",Cost:"$700",Weight:150},{Name:"Mickey",Cost:"$1000",Weight:170},{Name:"Dimple",Cost:"$1200",Weight:200}]
+    - let horses  = results 
   div(class="container-fluid mt-3")
   div(class="row")
     each horse,index in horses 
