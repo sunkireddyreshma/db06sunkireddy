@@ -36,15 +36,15 @@ async function recreateDB(){
  // Delete everything
  await horse.deleteMany();
  let instance1 = new
-horse({Name:"ghost", Cost:"$56",
-Weight:25.4});
+horse({Name:"Pinky", Cost:"$150",
+Weight:25});
  instance1.save( function(err,doc) {
  if(err) return console.error(err);
  console.log("First object saved")
  });
  let instance2 = new horse({
   Name: "Chutkey",
-  Cost: "$67",
+  Cost: "$120",
   Weight: 23
 });
 instance2.save(function (err, doc) {
@@ -53,8 +53,8 @@ instance2.save(function (err, doc) {
 });
 let instance3 = new horse({
   Name: "chinky",
-  Cost: "$45",
-  Weight: 32
+  Cost: "$145",
+  Weight: 26
 });
 instance3.save(function (err, doc) {
   if (err) return console.error(err);
