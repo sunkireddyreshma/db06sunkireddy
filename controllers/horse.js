@@ -23,8 +23,7 @@ exports.horse_update_put = async function(req, res) {
     try {
     let toUpdate = await horse.findById( req.params.id)
     // Do updates of properties
-    if(req.body.Name)
-    toUpdate.Name = req.body.Name;
+    if(req.body.Name) toUpdate.Name = req.body.Name;
     if(req.body.Cost) toUpdate.Cost = req.body.Cost;
     if(req.body.Weight) toUpdate.Weight = req.body.Weight;
     let result = await toUpdate.save();
