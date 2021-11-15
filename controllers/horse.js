@@ -12,10 +12,18 @@ exports.horse_detail = async function(req, res) {
     }
    };
 
-// Handle horse delete form on DELETE.
-exports.horse_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: horse delete DELETE ' + req.params.id);
-};
+// Handle horse delete on DELETE.
+exports.horse_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await horse.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 //Handle horse update form on PUT.
 exports.horse_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body
