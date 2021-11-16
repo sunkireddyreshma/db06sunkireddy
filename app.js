@@ -19,6 +19,7 @@ var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var horse = require("./models/horse");
 var resourceRouter = require('./routes/resource');
+var detailRouter = require('./routes/detail');
 
 // We can seed the collection if needed on
 //Get the default connection
@@ -80,6 +81,7 @@ app.use('/horse', horseRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
+app.use('/resource', detailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
