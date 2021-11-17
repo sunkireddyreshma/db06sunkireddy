@@ -19,8 +19,9 @@ var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var horse = require("./models/horse");
 var resourceRouter = require('./routes/resource');
-var detailRouter = require('./routes/detail');
 
+var detailRouter = require('./routes/detail');
+//var horsecreateRouter = require('./routes/create');
 // We can seed the collection if needed on
 //Get the default connection
 var db = mongoose.connection;
@@ -82,6 +83,7 @@ app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
 app.use('/detail', detailRouter);
+//app.use('/create', horsecreateRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
