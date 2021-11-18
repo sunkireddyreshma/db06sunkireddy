@@ -1,6 +1,6 @@
 extends layout
 block content
- h1= title
+ h1(class="text-success")= title
  - let horseid = toShow._id
  - let horseName = toShow.Name
  - let horseCost = toShow.Cost
@@ -19,7 +19,7 @@ block content
   div.form-group
     label.horseAttr(for='Weight') horse Weight
     input#Weight(type='number', name='Weight', value= horseWeight )
-    input(type="submit")
+    input(type="submit" class="btn btn-primary btn-sm")
  script.
   document.forms['horseForm'].addEventListener('submit', (event) => {
    event.preventDefault();
