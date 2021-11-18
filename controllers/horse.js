@@ -11,6 +11,7 @@ exports.horse_detail = async function(req, res) {
     res.send(`{"error": document for id ${req.params.id} not found`);
     }
    };
+  ;
   // Handle building the view for creating a horse.
 // No body, no in path parameter, no query.
 // Does not need to be async
@@ -24,6 +25,19 @@ exports.horse_create_Page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+    // Handle building the view for updating a horse.
+// query provides the id
+exports.horse_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await horse.findById(req.query.id)
+    res.render('horseupdate', { title: 'horse Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   }
 
 
    // Handle a show one view with id specified by query
@@ -63,7 +77,7 @@ exports.horse_update_put = async function(req, res) {
     if(req.body.Cost) toUpdate.Cost = req.body.Cost;
     if(req.body.Weight) toUpdate.Weight = req.body.Weight;
     let result = await toUpdate.save();
-    console.log("Sucess " + result)
+    console.log("Sucess" + result)
     res.send(result)
     } catch (err) {
     res.status(500)

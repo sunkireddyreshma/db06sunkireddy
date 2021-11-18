@@ -22,6 +22,8 @@ var resourceRouter = require('./routes/resource');
 
 var detailRouter = require('./routes/detail');
 var horsecreateRouter = require('./routes/create');
+var horseupdateRouter = require('./routes/update');
+var horsedeleteRouter = require('./routes/delete');
 // We can seed the collection if needed on
 //Get the default connection
 var db = mongoose.connection;
@@ -84,10 +86,13 @@ app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
 app.use('/detail', detailRouter);
 app.use('/create', horsecreateRouter);
+app.use('/update', horseupdateRouter);
+app.use('/delete', horsedeleteRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+next(createError(404));
 });
 
 // error handler
