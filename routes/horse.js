@@ -5,4 +5,9 @@ var router = express.Router();
 router.get('/horses/:id', horse_controlers.horse_detail);
 /* GET create costume page */
 router.get('/create', horse_controlers.horse_create_Page);
+
+// Get View
+router.get('/', horse_controlers.horse_view_all_Page);
+
+
 module.exports = router;
