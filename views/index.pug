@@ -1,17 +1,26 @@
-extends layout
-
-block content
-  p Sunkireddy Reshmareddy
-  p assessment designed to feed into the learning process and work more pratical.
-  <button type="button" class="btn btn-dark" OnClick="update()">Press Me</button>
-  div(id="target") Display
-  - var url  = 'Horse';
-  a(href='/' + url) Horse
-  
-  
-  script.
-     var client_count = 0
-     function update(){
-       client_count++;
-       document.getElementById("target").innerHTML = "Value now " +client_count;
-    }
+//- extends layout
+//- block content
+//-   h1= title
+//-   p Welcome to the #{title}
+//-   button(type="button", class="btn btn-success" onclick="update()") Press me
+//-   <br>
+//-   <br>
+//-    div(id="target") Result
+//-   script. 
+//-       var client_count=0 
+//-       function update(){
+//-         client_count++;
+//-         document.getElementById("target").innerHTML=`Value now ${client_count}`
+//-       } 
+extends layout 
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/Horse") Take me to horse
+    br 
+    a(href="/logout") Logout 
