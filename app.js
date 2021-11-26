@@ -3,6 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var passport = require('passport'); 
+var Account =require('./models/account');
+var LocalStrategy = require('passport-local').Strategy; 
+
+var app = express();
+
+
 
 
 const connectionString ='mongodb+srv://sunkireddy:Godha%402356@cluster0.kknni.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
@@ -66,7 +73,7 @@ instance3.save(function (err, doc) {
 let reseed = true;
 if (reseed) { recreateDB();}
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -76,7 +83,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(require('express-session')({ 
+  secret: 'keyboard cat', 
+  resave: false, 
+  saveUninitialized: false 
+})); 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize()); 
+app.use(passport.session()); 
+
+passport.use(new LocalStrategy(Account.authenticate())); 
+passport.serializeUser(Account.serializeUser()); 
+passport.deserializeUser(Account.deserializeUser()); 
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -105,7 +123,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
 
 module.exports = app;
